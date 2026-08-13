@@ -1,0 +1,37 @@
+# Dependencies and generated output
+node_modules/
+dist/
+release/
+out/
+*.log
+*.bak
+
+# Bundled AI binaries and model weights are distributed as release assets.
+ai/*.exe
+ai/*.dll
+ai/models/*.gguf
+disk-space-manager-ui/assets/
+app-icon-source.png
+
+# Local machine helpers and one-off cleanup scripts
+build-tools/
+portable-app/
+卸载腾讯移动应用引擎.ps1
+清理Androws残留.ps1
+清理已确认无效快捷方式.ps1
+清理已确认注册表残留.reg
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Signing material must never enter source control
+*.pfx
+*.p12
+*.pem
+*.key
+*.cer
+*.crt

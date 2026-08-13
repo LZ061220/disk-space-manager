@@ -1,0 +1,9 @@
+磁盘空间管家 — 未签名测试版说明
+
+此构建尚未使用受信任的 Authenticode 代码签名证书。
+
+因此 Windows Defender SmartScreen 可能显示“未知发布者”或“Windows 已保护你的电脑”。请仅从项目的官方 GitHub Releases 页面下载，并在运行前核对同一 Release 中 SHA256SUMS.txt 提供的 SHA-256。
+
+数字签名缺失不代表程序一定不安全，但 Windows 无法通过发布者证书验证文件来源。若文件哈希与 Release 不一致，请勿运行。
+
+正式稳定版计划使用可信代码签名证书。当前版本用于公开测试与问题反馈。

@@ -1,0 +1,63 @@
+{
+  "name": "disk-space-manager-desktop",
+  "version": "0.3.0",
+  "description": "本地 Windows C/D 盘空间可视化与安全清理工具",
+  "author": "Lz",
+  "private": true,
+  "license": "MIT",
+  "main": "desktop-main.js",
+  "scripts": {
+    "desktop": "electron .",
+    "test": "node --test test/*.test.js",
+    "check": "node --check desktop-main.js && node --check preload.js && node --check ai-analyzer.js && node --check disk-space-manager.js && node --check disk-space-manager-ui/app.js",
+    "build:win": "node --test test/*.test.js && electron-builder --win nsis portable",
+    "build:dir": "node --test test/*.test.js && electron-builder --win dir"
+  },
+  "devDependencies": {
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "local.diskspacemanager.app",
+    "productName": "磁盘空间管家",
+    "files": [
+      "desktop-main.js",
+      "app-icon.ico",
+      "preload.js",
+      "ai-analyzer.js",
+      "disk-space-manager.js",
+      "recycle-to-bin.ps1",
+      "disk-space-manager-ui/**/*",
+      "!disk-space-manager-ui/assets/**/*",
+      "ai/*.dll",
+      "ai/llama-server.exe",
+      "ai/models/*.gguf",
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md",
+      "UNSIGNED_BUILD_NOTICE.txt",
+      "third_party_licenses/**/*"
+    ],
+    "asarUnpack": [
+      "ai/**/*",
+      "recycle-to-bin.ps1"
+    ],
+    "win": {
+      "icon": "app-icon.ico",
+      "artifactName": "${productName}-${version}-${arch}-${os}.${ext}",
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "signtoolOptions": {
+        "signingHashAlgorithms": [
+          "sha256"
+        ],
+        "rfc3161TimeStampServer": "http://timestamp.digicert.com"
+      }
+    }
+  },
+  "allowScripts": {
+    "electron@43.4.0": true,
+    "electron-winstaller@5.4.0": true
+  }
+}
